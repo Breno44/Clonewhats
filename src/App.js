@@ -2,14 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import './Styles/App.css';
 
-import ChatListItem from './components/ChatList/';
-import ChatIntro from './components/ChatIntro/';
+import ChatListItem from './components/ChatList/index';
+import ChatIntro from './components/ChatIntro/index';
+import ChatWindow from './components/ChatWindow/index';
 
 import { DonutLarge, Chat, MoreVert, Search } from '@material-ui/icons';
 
 export default () => {
 
-  const [chatList, setChatList] = useState([{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}])
+  const [chatList, setChatList] = useState([
+    {chatId: 1, title: "Davids arrombado", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
+    {chatId: 2, title: "Davids arrombado", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
+    {chatId: 3, title: "Davids arrombado", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
+    {chatId: 4, title: "Davids arrombado", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
+  ]);
+  const [activeChat, setActiveChat] = useState({});
 
   return (
     <div className="app-window">
@@ -41,13 +48,21 @@ export default () => {
           {chatList.map((item, key) => (
             <ChatListItem 
               key={key}
+              data={item}
+              active={activeChat.chatId === chatList[key].chatId}
+              onClick={() => setActiveChat(chatList[key])}
             />
           ))}
         </div>
       </div>
 
       <div className="contentarea">
-        <ChatIntro />
+        {activeChat.chatId !== undefined &&
+          <ChatWindow />
+        }
+        {activeChat.chatId === undefined &&
+          <ChatIntro />
+        }
       </div>
     </div>
   );
