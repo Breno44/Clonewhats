@@ -11,18 +11,23 @@ import { DonutLarge, Chat, MoreVert, Search } from '@material-ui/icons';
 export default () => {
 
   const [chatList, setChatList] = useState([
-    {chatId: 1, title: "Davids arrombado", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
-    {chatId: 2, title: "Davids arrombado", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
-    {chatId: 3, title: "Davids arrombado", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
-    {chatId: 4, title: "Davids arrombado", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
+    {chatId: 1, title: "Fulano de tal", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
+    {chatId: 2, title: "Fulano de tal", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
+    {chatId: 3, title: "Fulano de tal", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
+    {chatId: 4, title: "Fulano de tal", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
   ]);
   const [activeChat, setActiveChat] = useState({});
+  const [user, setUser] = useState({
+    id: 1234,
+    avatar: 'https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg',
+    name: 'Breno Henrique'
+  });
 
   return (
     <div className="app-window">
       <div className="sidebar">
         <header>
-          <img className="header--avatar" src="https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg" alt="avatar-imagem" />
+          <img className="header--avatar" src={user.avatar} alt="avatar-imagem" />
 
           <div className="header--buttons"> 
             <div className="header--btn">
@@ -58,7 +63,9 @@ export default () => {
 
       <div className="contentarea">
         {activeChat.chatId !== undefined &&
-          <ChatWindow />
+          <ChatWindow 
+            user={user}
+          />
         }
         {activeChat.chatId === undefined &&
           <ChatIntro />
