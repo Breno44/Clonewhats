@@ -96,7 +96,7 @@ export default ({user}) => {
             <div className="chatWindow--header">
                 <div className="chatWindow--headerinfo">
                     <img className="chatWindow--avatar" src="https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg" alt="" />
-                    <div className="chatWindow--name">Davids arrombado</div>
+                    <div className="chatWindow--name">Fulano de tal</div>
                 </div>
                 <div className="chatWindow--headerbuttons">
                      <div className="chatWindow--btn">
