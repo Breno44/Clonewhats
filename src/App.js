@@ -5,27 +5,50 @@ import './Styles/App.css';
 import ChatListItem from './components/ChatList/index';
 import ChatIntro from './components/ChatIntro/index';
 import ChatWindow from './components/ChatWindow/index';
+import NewChat from './components/NewChat/index';
+import Login from './components/Login/index';
+import Api from './api'
 
 import { DonutLarge, Chat, MoreVert, Search } from '@material-ui/icons';
 
 export default () => {
 
-  const [chatList, setChatList] = useState([
-    {chatId: 1, title: "Fulano de tal", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
-    {chatId: 2, title: "Fulano de tal", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
-    {chatId: 3, title: "Fulano de tal", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
-    {chatId: 4, title: "Fulano de tal", image: "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"},
-  ]);
+  const [chatList, setChatList] = useState([]);
   const [activeChat, setActiveChat] = useState({});
   const [user, setUser] = useState({
-    id: 1234,
-    avatar: 'https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg',
-    name: 'Breno Henrique'
+    id: 'u1sVgUjKRHW3DiJNAEjHO0kPw8e2',
+    name: 'Breno Henrique',
+    avatar: 'https://lh3.googleusercontent.com/a/AATXAJz5Lrh1dfF5YGqnJqJBgSGMn7IfR3Upj6YBsp4F=s96-c',
   });
+  const [showNewChat, setShowNewChat] = useState(false);
+
+  const handleNewChat = () => {
+    setShowNewChat(true);
+  }
+
+  const handleLoginData = async (u) => {
+    let newUser = {
+      id: u.uid,
+      name: u.displayName,
+      avatar: u.photoURL
+    };
+    await Api.addUser(newUser);
+    setUser(newUser);
+  }
+
+  if(user === null) {
+    return (<Login onReceive={handleLoginData} />);
+  }
 
   return (
     <div className="app-window">
       <div className="sidebar">
+        <NewChat 
+          chatList={chatList}
+          user={user}
+          show={showNewChat}
+          setShow={setShowNewChat}
+        />
         <header>
           <img className="header--avatar" src={user.avatar} alt="avatar-imagem" />
 
@@ -33,7 +56,7 @@ export default () => {
             <div className="header--btn">
               <DonutLarge />
             </div>
-            <div className="header--btn">
+            <div onClick={handleNewChat} className="header--btn">
               <Chat />
             </div>
             <div className="header--btn">

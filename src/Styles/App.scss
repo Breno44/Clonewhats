@@ -10,7 +10,9 @@ body {
 
 .app-window {
   display: flex;
-  height: 100vh;
+  height: 96vh;
+  width: 70%;
+  margin-top: 18px;
   background-color: #ededed;
 
   .sidebar {
