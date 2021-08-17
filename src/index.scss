@@ -1,12 +1,14 @@
-#root {
-  display: flex;
-  justify-content: center;
-  background-color: #d6dbd7;
-  background: rgb(0, 150, 136);
-  background: linear-gradient(
-    180deg,
-    rgba(0, 150, 136, 1) 0%,
-    rgba(0, 150, 136, 1) 14%,
-    rgba(213, 219, 216, 1) 14%
-  );
+@media (min-width: 1920px) {
+  #root {
+    display: flex;
+    justify-content: center;
+    background-color: #d6dbd7;
+    background: rgb(0, 150, 136);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 150, 136, 1) 0%,
+      rgba(0, 150, 136, 1) 13.4%,
+      rgba(213, 219, 216, 1) 13.4%
+    );
+  }
 }
