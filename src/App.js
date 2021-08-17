@@ -15,11 +15,7 @@ export default () => {
 
   const [chatList, setChatList] = useState([]);
   const [activeChat, setActiveChat] = useState({});
-  const [user, setUser] = useState({
-    id: 'u1sVgUjKRHW3DiJNAEjHO0kPw8e2',
-    name: 'Breno Henrique',
-    avatar: 'https://lh3.googleusercontent.com/a/AATXAJz5Lrh1dfF5YGqnJqJBgSGMn7IfR3Upj6YBsp4F=s96-c',
-  });
+  const [user, setUser] = useState(null);
   const [showNewChat, setShowNewChat] = useState(false);
 
   useEffect(() => {
